@@ -1,5 +1,7 @@
 #!/bin/bash\n
 sudo -i\n
+apt-get update -y\n
+apt-get upgrade -y\n
 apt-get install apache2 -y\n
 apt-get install awscli -y\n
 cd /var/www/html\n

@@ -25,5 +25,5 @@ resource "aws_db_instance" "default" {
   parameter_group_name = "default.mysql5.7"
   skip_final_snapshot  = true
   publicly_accessible  = true
-  security_group_names = ["sg-017c097bb1674f881"]
+  vpc_security_group_ids = ["sg-017c097bb1674f881"]
 }

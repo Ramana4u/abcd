@@ -7,11 +7,11 @@ resource "aws_instance" "myec2" {
   instance_type = "t2.micro"
   subnet_id   = "subnet-0ad08acb398ada09d"
   key_name = "sshkey1"
-  user_data = "templatefile("${path.module}/userdata.tftpl", {endpoint = aws_db_instance.default.endpoint},{username = aws_db_instance.default.username},{password = aws_db_instance.default.password})"
+  user_data = templatefile("${path.module}/userdata.tftpl", {endpoint = aws_db_instance.default.endpoint},{username = aws_db_instance.default.username},{password = aws_db_instance.default.password})
   iam_instance_profile = "demo-Role"
   security_groups = ["sg-017c097bb1674f881"]
   tags = {
-    Name = "Ec2tf"
+    Name = "newec2"
   }
 }
 resource "aws_db_instance" "default" {

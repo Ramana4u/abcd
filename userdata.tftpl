@@ -19,5 +19,21 @@ sudo sed -i.bak 's/localhost/${endpoint}/g' /opt/lampp/htdocs/includes/dbconnect
 sudo sed -i 's/password/${password}/g' /opt/lampp/htdocs/includes/dbconnection.php
 sudo chmod 777 /opt/lampp/etc/extra/httpd-xampp.conf
 sudo sed -i.bak 's/local/all granted/g' /opt/lampp/etc/extra/httpd-xampp.conf
+sudo chmod 755 /opt/lampp/etc/extra/httpd-xampp.conf
 sudo /opt/lampp/lampp restart
+sudo chmod 777 /opt/lampp/phpmyadmin/config.inc.php
+sudo echo ' $cfg["Servers"][$i]["verbose"] = "Amazon RDS";
+  $cfg["Servers"][$i]['host"] = "${endpoint}";
+  $cfg["Servers"][$i]["user"] = "admin";
+  $cfg["Servers"][$i]["password"] = '${password}';
+  $cfg["Servers"][$i]["port"] = "3306";
+  $cfg["Servers"][$i]["auth_type"] = "cookie";
+  $cfg["Servers"][$i]["AllowNoPassword"] = true; ' >> /opt/lampp/phpmyadmin/config.inc.php
+sudo chmod 400 /opt/lampp/phpmyadmin/config.inc.php
+sudo /opt/lampp/lampp restart
+sudo apt install mysql-client-core-8.0
+mysql -h ${endpoint} -u admin -p
+ramana4u2021
+use cpms
+source /abcd/sourcecode/SQL File/cpms.sql
 

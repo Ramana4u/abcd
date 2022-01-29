@@ -11,7 +11,7 @@ resource "aws_instance" "myec2" {
   iam_instance_profile = "demo-Role"
   security_groups = ["sg-017c097bb1674f881"]
   tags = {
-    Name = "cpms"
+    Name = "cpms2"
   }
 }
 resource "aws_db_instance" "default" {
@@ -20,7 +20,7 @@ resource "aws_db_instance" "default" {
   engine_version       = "5.7"
   instance_class       = "db.t2.micro"
   name                 = "cpms"
-  identifier           = "myrdb"
+  identifier           = "myrdb2"
   username             = "admin"
   password             = "ramana4u2021"
   parameter_group_name = "default.mysql5.7"

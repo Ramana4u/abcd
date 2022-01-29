@@ -34,7 +34,7 @@ sudo echo '$cfg["Servers"][$i]["AllowNoPassword"] = true;' >> /opt/lampp/phpmyad
 sudo chmod 400 /opt/lampp/phpmyadmin/config.inc.php
 sudo /opt/lampp/lampp restart
 sudo apt install mysql-client-core-8.0
-mysql -h ${endpoint} -u admin -p
+sudo mysql -h ${address} -u admin -p
 ramana4u2021
 use cpms
 source /abcd/sourcecode/SQL File/cpms.sql

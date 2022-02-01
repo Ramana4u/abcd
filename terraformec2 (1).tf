@@ -22,7 +22,6 @@ resource "aws_launch_configuration" "as_conf" {
   instance_type = var.instance_type
   security_groups    = var.security_groups
   key_name = "sshkey1"
-  subnet_id   = "subnet-0ad08acb398ada09d"
   iam_instance_profile = "demo-Role"
    user_data = templatefile("${path.module}/userdata.tftpl", {endpoint = aws_db_instance.default.endpoint,password = aws_db_instance.default.password,address = aws_db_instance.default.address})
 }

@@ -32,7 +32,7 @@ resource "aws_autoscaling_group" "bar" {
   min_size             = 1
   max_size             = 2
   desired_capacity     = 1
-  target_group_arns   = aws_lb_target_group.test.arn
+  target_group_arns   = [aws_lb_target_group.test.arn]
  availability_zones = var.availability_zones
 }
 resource "aws_lb" "test" {

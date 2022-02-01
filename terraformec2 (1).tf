@@ -1,19 +1,6 @@
 provider "aws" {
   region = "us-east-2"
 }
-resource "aws_instance" "myec2" {
-  depends_on = [aws_db_instance.default]
-  ami           = "ami-0fb653ca2d3203ac1"
-  instance_type = "t2.micro"
-  subnet_id   = "subnet-0ad08acb398ada09d"
-  key_name = "sshkey1"
-  user_data = templatefile("${path.module}/userdata.tftpl", {endpoint = aws_db_instance.default.endpoint,password = aws_db_instance.default.password,address = aws_db_instance.default.address})
-  iam_instance_profile = "demo-Role"
-  security_groups = ["sg-017c097bb1674f881"]
-  tags = {
-    Name = "cpms2"
-  }
-}
 resource "aws_db_instance" "default" {
   allocated_storage    = 10
   engine               = "mysql"
